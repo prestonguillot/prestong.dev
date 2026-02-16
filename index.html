@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Preston Guillot – Staff Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent:      #1A3D2B;
+    --accent-mid:  #2D6A4F;
+    --accent-light:#52B788;
+    --text:        #1A1A1A;
+    --muted:       #555;
+    --border:      #D0CCC2;
+    --bg:          #F8F7F2;
+    --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Screen wrapper ── */
+  @media screen {
+    body { background: #e5e7eb; padding: 2rem; }
+    .page { max-width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 4px 32px rgba(0,0,0,0.15); }
+  }
+
+  /* ── Page setup ── */
+  @page {
+    size: A4;
+    margin: 0.55in 0.65in 0.6in 0.65in;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0.5in 0.65in 0.3in;
+    background: var(--accent);
+    color: #fff;
+  }
+
+  @media print {
+    .header { padding: 0 0 0.25in 0; background: none; color: var(--text); }
+  }
+
+  .header-left h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  @media print {
+    .header-left h1 { color: var(--accent); font-size: 1.7rem; }
+  }
+
+  .header-left .title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-top: 4px;
+  }
+
+  @media print {
+    .header-left .title { color: var(--accent-mid); }
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.85);
+  }
+
+  @media print {
+    .header-right { color: var(--muted); }
+  }
+
+  .header-right a { color: inherit; }
+
+  /* ── Skills bar ── */
+  .skills-bar {
+    background: var(--bg);
+    padding: 0.2in 0.65in;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.12in 0.2in;
+    border-bottom: 1px solid var(--border);
+  }
+
+  @media print {
+    .skills-bar { padding: 0.15in 0 0.15in 0; background: none; }
+  }
+
+  .skill-cat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .skill-cat-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+  }
+
+  .skill-cat-vals {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* ── Body ── */
+  .body {
+    padding: 0.25in 0.65in 0.5in;
+  }
+
+  @media print {
+    .body { padding: 0.2in 0 0; }
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 0.25in; }
+  .section-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 0.12in;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Summary ── */
+  .summary p {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #3A3A3A;
+  }
+
+  /* ── Company ── */
+  .company-block { margin-bottom: 0.2in; }
+  .company-block:last-child { margin-bottom: 0; }
+
+  .company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.1in;
+    gap: 12px;
+  }
+
+  .company-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+
+  .company-tenure {
+    font-size: 0.68rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── Role ── */
+  .role {
+    padding-left: 14px;
+    border-left: 2px solid var(--border);
+    margin-bottom: 0.15in;
+    position: relative;
+  }
+
+  .role::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 2px solid #fff;
+    outline: 1px solid var(--accent-light);
+  }
+
+  .role:last-child { margin-bottom: 0; }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+
+  .role-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .role-meta {
+    font-size: 0.68rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .role-location {
+    font-size: 0.68rem;
+    font-weight: 300;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  .role ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .role li {
+    font-size: 0.76rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #2A2A2A;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .role li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+  }
+
+  .role.condensed li { font-size: 0.72rem; }
+
+  /* ── Page breaks ── */
+  @media print {
+    .role li { break-inside: avoid; page-break-inside: avoid; }
+    .role-header { break-after: avoid; page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <h1>Preston Guillot</h1>
+      <div class="title">Staff Software Engineer</div>
+    </div>
+    <div class="header-right">
+      <span>Charlotte, NC</span>
+      <a href="mailto:prestonguillot@gmail.com">prestonguillot@gmail.com</a>
+      <span>(601) 347-2202</span>
+      <a href="https://prestong.dev">prestong.dev</a>
+      <a href="https://github.com/prestonguillot">github.com/prestonguillot</a>
+    </div>
+  </div>
+
+  <div class="skills-bar">
+    <div class="skill-cat">
+      <span class="skill-cat-label">Languages</span>
+      <span class="skill-cat-vals">Scala, TypeScript, PHP, C#, F#, SQL</span>
+    </div>
+    <div class="skill-cat">
+      <span class="skill-cat-label">Infrastructure</span>
+      <span class="skill-cat-vals">Kubernetes, Apache Kafka, Google Cloud Platform, Docker</span>
+    </div>
+    <div class="skill-cat">
+      <span class="skill-cat-label">Databases</span>
+      <span class="skill-cat-vals">MySQL, MongoDB, SQL Server, Oracle, Spanner, BigQuery</span>
+    </div>
+    <div class="skill-cat">
+      <span class="skill-cat-label">Frameworks &amp; Tools</span>
+      <span class="skill-cat-vals">Splunk, New Relic, Claude Code, WCF, Web API, Git</span>
+    </div>
+    <div class="skill-cat">
+      <span class="skill-cat-label">Practices</span>
+      <span class="skill-cat-vals">Distributed Systems, Microservices, SOA, TDD, Agile / Scrum, SOLID</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section summary">
+      <div class="section-label">Profile</div>
+      <p>Staff Software Engineer with 18+ years of experience designing and building distributed, highly scalable systems — from healthcare data platforms to large-scale fintech infrastructure. Currently serving as lead architect of Credit Karma Money, a neobanking product serving millions of members, with deep expertise in Scala and TypeScript microservices, event-driven architecture on Kafka, and cloud infrastructure on GCP. A consistent engineering leader: technical mentor, team lead, and driver of cross-team architectural decisions.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Experience</div>
+
+      <div class="company-block">
+        <div class="company-header">
+          <span class="company-name">Credit Karma</span>
+          <span class="company-tenure">Mar 2016 – Present &middot; Charlotte, NC &amp; San Francisco, CA</span>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Staff Software Engineer</span>
+            <span class="role-meta">Jun 2023 – Present</span>
+          </div>
+          <div class="role-location">Charlotte, NC</div>
+          <ul>
+            <li>Lead architect of Credit Karma Money, a neobanking product offering checking, savings, and financial services to millions of members.</li>
+            <li>Define and drive technical architecture across a suite of Scala and TypeScript microservices deployed on Kubernetes, working closely with engineering leadership on roadmap and system design strategy.</li>
+            <li>Partner with product, data, and platform teams to ensure architectural decisions are coherent, scalable, and aligned with long-term business goals.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Senior Software Engineer II</span>
+            <span class="role-meta">Mar 2019 – Jun 2023</span>
+          </div>
+          <div class="role-location">Charlotte, NC (relocated from San Francisco)</div>
+          <ul>
+            <li>Acting engineering lead for CK International; successfully launched Credit Karma UK in 2020, expanding the platform into a new market with a containerized PHP 7 backend and hapi.js middleware.</li>
+            <li>Transitioned to CK Money and built out a significant portion of its fraud prevention infrastructure, including a Drools-powered rules engine, internal administrative tooling, and a real-time debit authorization system capable of making accept/decline decisions on in-flight transactions.</li>
+            <li>Reduced backend load by 80% by identifying and eliminating redundant frontend API calls and introducing a caching layer to cut unnecessary round trips.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-header">
+            <span class="role-title">Senior Software Engineer</span>
+            <span class="role-meta">Mar 2016 – Mar 2019</span>
+          </div>
+          <div class="role-location">San Francisco, CA</div>
+          <ul>
+            <li>Joined the Credit Ecosystem team, owning backend processing and delivery of credit report data across Credit Karma's 100 million+ member base — including architecting a batch pipeline to proactively refresh the entire user base's credit data rather than only on-demand.</li>
+            <li>Led architectural efforts to decompose monolithic functionality into independent microservices, establishing patterns adopted across the broader engineering organization.</li>
+            <li>Took on engineering lead responsibilities for CK Canada (later CK International), overseeing feature development, architecture, and monetization strategy for the Canadian market.</li>
+            <li>Led the internationalization effort to translate the CK Canada platform into French for launch in Quebec — to this day the only multi-language surface across Credit Karma.</li>
+            <li>Mentored junior and mid-level engineers, contributing to team growth, code quality culture, and engineering best practices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="company-block">
+        <div class="company-header">
+          <span class="company-name">Practice Fusion</span>
+          <span class="company-tenure">Feb 2015 – Mar 2016 &middot; San Francisco, CA</span>
+        </div>
+        <div class="role condensed">
+          <div class="role-header">
+            <span class="role-title">Senior Software Engineer</span>
+          </div>
+          <ul>
+            <li>Built API and backend services for a high-volume EHR platform recording 250,000+ patient visits daily, using C# with WCF/Web API, ActiveMQ, and a mix of relational and document databases.</li>
+            <li>Led migration from ICD-9 to ICD-10 clinical diagnosis coding and spearheaded the production deployment of MongoDB for patient flowsheets.</li>
+            <li>Delivered new services enabling delivery of patient medical records to third parties for clinical trial matching.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="company-block">
+        <div class="company-header">
+          <span class="company-name">Clear Lines Consulting</span>
+          <span class="company-tenure">Jun 2013 – Feb 2015</span>
+        </div>
+        <div class="role condensed">
+          <div class="role-header">
+            <span class="role-title">Consultant – Primary Developer</span>
+          </div>
+          <ul>
+            <li>Led implementation of an iDesign-based SOA platform for the investment arm of a large insurance organization, enabling portfolio optimization against configurable targets via a third-party solver engine.</li>
+            <li>Guided a team inexperienced in service-oriented architecture to a successful delivery, introducing modern source control (Git) and CI (TeamCity) practices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="company-block">
+        <div class="company-header">
+          <span class="company-name">Slalom Consulting</span>
+          <span class="company-tenure">Jan 2010 – Jun 2013</span>
+        </div>
+        <div class="role condensed">
+          <div class="role-header">
+            <span class="role-title">Developer</span>
+          </div>
+          <ul>
+            <li>Built financial planning tools for a global retail client — VSTO/Excel-based platform backed by WCF services and SSAS, including automation of cross-system business processes using Quartz.NET scheduling.</li>
+            <li>Developed a SharePoint 2010 member portal for a major news organization, providing partners visibility into content performance via OLAP data and Silverlight applications.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="company-block">
+        <div class="company-header">
+          <span class="company-name">EMC<sup style="font-size:0.65em">2</sup></span>
+          <span class="company-tenure">Aug 2007 – Jan 2010</span>
+        </div>
+        <div class="role condensed">
+          <div class="role-header">
+            <span class="role-title">Software Engineering Consultant</span>
+          </div>
+          <ul>
+            <li>Delivered custom SharePoint and web-based applications across financial services, high-tech, and communications clients — including sole development of a trading restriction logic engine and lead architect on an eleven-workflow HR and patent processing solution.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="company-block">
+        <div class="company-header">
+          <span class="company-name">Globalstar</span>
+          <span class="company-tenure">Oct 2006 – Aug 2007</span>
+        </div>
+        <div class="role condensed">
+          <div class="role-header">
+            <span class="role-title">Associate Developer</span>
+          </div>
+          <ul>
+            <li>Automated billing department processes in Perl and designed SOX 404-compliant reporting and logging tooling following Globalstar's IPO.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section">
+      <div class="section-label">Education</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div>
+          <div style="font-size:0.82rem;font-weight:600">B.S. Computer Science</div>
+          <div style="font-size:0.76rem;color:var(--muted);margin-top:2px">University of Southern Mississippi</div
